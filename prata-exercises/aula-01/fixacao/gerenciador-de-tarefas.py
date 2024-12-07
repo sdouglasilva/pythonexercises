@@ -11,13 +11,49 @@
 # Conte quantas tarefas ainda estão pendentes e mostre na tela.
 # Faça um menu com as opções de adicionar, remover, mostrar tarefas pendentes, marcar como concluída e contar quantas tarefas estão pendentes.
 
+
 def task_list():
+    """"Listando Tarefas
+    """
     for i in range(len(tasks)):
         print(f"[{i}] - {tasks[i]}")
 
-def add_task(task:str,tasks:list):
-    tasks.append(task)
+def add_task(new_task:str,tasks:list):
+    """
+    Adicionando tarefas
+    """
+    tasks.append(new_task)
+
+def remove_task(index:int, tasks:list):
+    """Removendo tarefas
+
+    Args:
+        index (int): recebe um número inteiro referente a posição da tarefa desejada
+        tasks (list): lista de tarefas que deseja alterar.
+
+    Returns:
+        lista de tarefas atualizadas.
+    """
+    tasks.pop(index)
+    return f'Tarefa{tasks[index]} removida com sucesso;'
+
+def count_tasks(tasks:list):
+    """Contando tarefas
+
+    Args:
+        tasks (list): lista de tarefas desejada
+
+    Returns:
+        Quantidade de tarefas existente na lista
+    """
+    pendind_tasks = len(tasks)
+
+    return pendind_tasks
+
     
+
+
+
 
 tasks = ['Estudar','Trabalhar','Correr','Preparar Aula']
 
@@ -28,18 +64,15 @@ print("*"*30,"|",'DO',"|","*"*38,"")
 print("*"*40,"|",'DOUGLINHAS',"|","*"*20,"")
 
 
-
-
-
-new_task = input('Digite o nome de uma nova tarefa para adicionar a lista de tarefas.')
+new_task = input('Digite o nome de uma nova tarefa para adicionar a lista de tarefas: ')
 new_task = new_task.capitalize()
-tasks.append(new_task)
-
+add_task(new_task,tasks)
+task_list()
+del_task = int(input('Digite o número de uma tarefa que deseja marcar como concluída'))
+remove_task(del_task,tasks)
 print(tasks)
 
-# for i in new_task:
 
-#     print(i)
 
 
 #print(new_task)
